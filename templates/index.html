@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/styles.css" />
+  <script src="../static/app.js" defer></script>
+  <title>Mi página web</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">GOLDEN STEP</div>
+    <ul class="nav-links">
+      <li><a href="#inicio">INICIO</a></li>
+      <li><a href="#productos">PRODUCTOS</a></li>
+      <li><a href="#contacto">CONTACTO</a></li>
+      <li><a href="#acerca">ACERCA DE NOSOTROS</a></li>
+    </ul>
+    <button class="burger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <header id="inicio" class="hero-section">
+    <h1>Bienvenido a Nuestra Página Web</h1>
+    <p>Explora nuestros modelos exclusivos y encuentra el calzado perfecto para ti.</p>
+    <a href="#productos" class="btn-primary">Ver productos</a>
+  </header>
+
+  <main>
+    <section id="productos" class="productos-container">
+      <h2>PRODUCTOS</h2>
+
+      <div class="productos">
+        {% for producto in productos %}
+          <div class="producto-card">
+            <img src="{{ url_for('static', filename=producto['imagen']) }}" alt="{{ producto['nombre'] }}">
+            <h3>{{ producto['nombre'] }}</h3>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+      <h2>Contacto</h2>
+      <form id="contact-form" method="POST" action="/send_email">
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="email" name="correo" placeholder="Correo Electrónico" required />
+        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <div id="flash-messages" class="flash-messages"></div>
+
+    <section id="acerca" class="about-section">
+      <h2>Acerca de Nosotros</h2>
+      <p>
+        “En Golden Step llevamos la moda hasta tu puerta. Ofrecemos calzado moderno, en tendencia y con la comodidad que necesitas para destacar en cada paso.
+        Realizamos envíos a nivel nacional. Contáctanos por WhatsApp o redes sociales y recibe atención rápida, personalizada y confiable.”
+      </p>
+    </section>
+  </main>
+
+  <footer>
+  <p>© <span id="year"></span> Golden Step — Todos los derechos reservados.</p>
+  <p>📦 Envíos a todo el Perú</p>
+  </footer>
+
+
+  <!-- Redes flotantes -->
+  <div class="social-float">
+    <a class="sf ig" href="https://www.instagram.com/goldenstep.pe" target="_blank" rel="noopener" aria-label="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+    </a>
+
+    <a class="sf fb" href="https://www.facebook.com/Goldenstepoficial" target="_blank" rel="noopener" aria-label="Facebook">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+    </a>
+
+    <a class="sf tk" href="https://www.tiktok.com/@goldenstep.pe" target="_blank" rel="noopener" aria-label="TikTok">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+    </a>
+  </div>
+
+  <!-- WhatsApp flotante -->
+  <a class="whatsapp-float"
+     href="https://wa.me/51968294133?text=Hola%20Golden%20Step,%20me%20interesan%20sus%20calzados.%20%C2%BFMe%20pueden%20enviar%20el%20cat%C3%A1logo%20disponible%20y%20promociones%20actuales%3F"
+     target="_blank" rel="noopener" aria-label="WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
