@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../static/styles.css" />
-  <script src="../static/app.js" defer></script>
-  <title>Mi página web</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+
 </head>
 
 <body>
@@ -32,17 +33,41 @@
 
   <main>
     <section id="productos" class="productos-container">
-      <h2>PRODUCTOS</h2>
+  <h2>PRODUCTOS</h2>
 
-      <div class="productos">
-        {% for producto in productos %}
-          <div class="producto-card">
-            <img src="{{ url_for('static', filename=producto['imagen']) }}" alt="{{ producto['nombre'] }}">
-            <h3>{{ producto['nombre'] }}</h3>
-          </div>
-        {% endfor %}
-      </div>
-    </section>
+  <!-- Tabs -->
+  <div class="catalog-tabs">
+    <button class="catalog-tab active" data-filter="mujer">MUJER</button>
+    <button class="catalog-tab" data-filter="hombre">HOMBRE</button>
+    <button class="catalog-tab" data-filter="ninos">NIÑOS</button>
+  </div>
+
+  <!-- Grid -->
+  <div class="catalog-grid" id="productsGrid">
+    {% for producto in productos %}
+      <article class="catalog-card" data-gender="{{ producto.get('genero','mujer') }}">
+        <div class="catalog-media">
+          <button class="catalog-heart" type="button" aria-label="Favorito">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5.5 6 5.5c2 0 3.3 1 4 2 0.7-1 2-2 4-2 3.5 0 5.5 3 3.5 7C19 16.65 12 21 12 21z"/>
+            </svg>
+          </button>
+
+          <img src="{{ url_for('static', filename=producto['imagen']) }}" alt="{{ producto['nombre'] }}">
+        </div>
+
+        <div class="catalog-info">
+          <p class="catalog-price">S/ {{ producto.get('precio','') }}</p>
+          <p class="catalog-title">{{ producto['nombre'] }}</p>
+          <p class="catalog-line">{{ producto.get('linea','') }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  <div class="catalog-bottom-line"></div>
+</section>
+
 
     <section id="contacto" class="contact-section">
       <h2>Contacto</h2>

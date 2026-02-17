@@ -71,3 +71,32 @@ function showFlashMessage(message, category) {
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".catalog-tab");
+  const cards = document.querySelectorAll(".catalog-card");
+
+  // Filtrado por tabs
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      const filter = tab.dataset.filter;
+      cards.forEach(card => {
+        card.style.display = (card.dataset.gender === filter) ? "block" : "none";
+      });
+    });
+  });
+
+  // Like corazón
+  document.querySelectorAll(".catalog-heart").forEach(btn => {
+    btn.addEventListener("click", () => btn.classList.toggle("liked"));
+  });
+
+  // Mostrar solo "mujer" al cargar (como la referencia)
+  const defaultFilter = "mujer";
+  cards.forEach(card => {
+    card.style.display = (card.dataset.gender === defaultFilter) ? "block" : "none";
+  });
+});
