@@ -26,14 +26,17 @@
   </nav>
 
   <header id="inicio" class="hero-section">
-    <h1>Bienvenido a Nuestra Página Web</h1>
-    <p>Explora nuestros modelos exclusivos y encuentra el calzado perfecto para ti.</p>
-    <a href="#productos" class="btn-primary">Ver productos</a>
-  </header>
+  <!-- Video de fondo -->
+  <video autoplay muted loop class="video-background">
+    <source src="{{ url_for('static', filename='fondov.mp4') }}" type="video/mp4">
+    Tu navegador no soporta este formato de video.
+  </video>
 
-  <main>
-    <section id="productos" class="productos-container">
-  <h2>PRODUCTOS</h2>
+  <!-- Contenido encima del video -->
+  <h1>Bienvenido a Nuestra Página Web</h1>
+  <p>Explora nuestros modelos exclusivos y encuentra el calzado perfecto para ti.</p>
+  <a href="#productos" class="btn-primary">Ver productos</a>
+ </header>
 
   <!-- Tabs -->
   <div class="catalog-tabs">
@@ -69,24 +72,26 @@
 </section>
 
 
-    <section id="contacto" class="contact-section">
-      <h2>Contacto</h2>
-      <form id="contact-form" method="POST" action="/send_email">
-        <input type="text" name="nombre" placeholder="Nombre" required />
-        <input type="email" name="correo" placeholder="Correo Electrónico" required />
-        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+ <section id="contacto" class="contact-section">
+  <h2>contacto</h2>
+  <form id="contact-form" method="post" action="/send_email">
+    <input type="text" name="nombre" placeholder="nombre" required />
+    <input type="email" name="correo" placeholder="correo electronico" required />
+    <textarea name="mensaje" placeholder="mensaje" required></textarea>
+    <button type="submit">enviar</button>
+    
 
-    <div id="flash-messages" class="flash-messages"></div>
+  </form>
+ </section>
+
+
+ <div id="flash-messages" class="flash-messages"></div>
 
     <section id="acerca" class="about-section">
       <h2>Acerca de Nosotros</h2>
-      <p>
-        “En Golden Step llevamos la moda hasta tu puerta. Ofrecemos calzado moderno, en tendencia y con la comodidad que necesitas para destacar en cada paso.
-        Realizamos envíos a nivel nacional. Contáctanos por WhatsApp o redes sociales y recibe atención rápida, personalizada y confiable.”
-      </p>
+      <p>“En Golden Step llevamos la moda hasta tu puerta. Ofrecemos calzado moderno, en tendencia y con la comodidad que necesitas para destacar en cada paso.
+        Realizamos envíos a nivel nacional. Contáctanos por WhatsApp o redes sociales y recibe atención rápida, personalizada y confiable.”</p>
+      
     </section>
   </main>
 

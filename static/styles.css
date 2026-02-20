@@ -162,19 +162,17 @@ body {
 }
 
 
-
-
-/* Seccion de contacto */
+/* Sección de contacto */
 .contact-section {
+    display: none;
     padding: 3rem;
     background: #000;
     color: white;
     text-align: center;
 }
 
-.contact-section h2 {
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
+#contacto:target {
+    display: block;
 }
 
 #contact-form {
@@ -182,7 +180,9 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     max-width: 500px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 #contact-form input, #contact-form textarea {
@@ -190,6 +190,8 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px;
     outline: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #contact-form button {
@@ -202,6 +204,9 @@ body {
     cursor: pointer;
     border-radius: 50px;
     transition: background 0.3s;
+    width: auto;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 #contact-form button:hover {
@@ -800,4 +805,28 @@ footer{
   margin: 0 0 26px;
   font-size: clamp(1.05rem, 1.8vw, 1.5rem);
   color: rgba(255,255,255,0.88);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 100vh;  /* Asegura que ocupe toda la altura de la pantalla */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  z-index: 2;  /* Asegura que el contenido esté encima del video */
+}
+
+.video-background {
+  position: absolute;  /* Asegura que el video ocupe todo el fondo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  /* El video estará detrás del texto */
+  object-fit: cover;
+  min-height: 100vh;  /* Asegura que cubra toda la pantalla en cualquier dispositivo */
 }
