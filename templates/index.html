@@ -24,9 +24,13 @@
     </nav>
 
     <header id="inicio" class="hero-section">
-        <h1>Bienvenido a Nuestra Página Web</h1>
-        <p>Descubre nuestros servicios y más.</p>
-        <a href="#servicios" class="btn-primary">Descubrir Más</a>
+      <video autoplay muted loop id="background-video">
+         <source src="{{ url_for('static', filename='12.mp4') }}" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+      <h1>bienvenido a nuestra pagina web</h1>
+      <p>descubre nuestros servicios y mas</p>
+      <a href="#servicios" class="btn-primary">descubrir más</a>
     </header>
 
     <main>

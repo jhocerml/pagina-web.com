@@ -307,3 +307,52 @@ footer {
         display: flex;
     }
 }
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* El video estará detrás del contenido */
+}
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
+    z-index: 1; /* Asegura que el contenido esté por encima del video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+}
+
+/* Capa oscura sobre el video */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Crea un fondo oscuro con opacidad */
+    z-index: 0; /* Asegura que la capa esté por encima del video, pero debajo del contenido */
+}
+
+.hero-section h1,
+.hero-section p,
+.hero-section a {
+    position: relative;
+    z-index: 2; /* Asegura que el contenido esté por encima de la capa oscura */
+    color: white;
+}
+
+.hero-section a {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
