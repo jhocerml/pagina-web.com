@@ -2,12 +2,11 @@ from flask import Flask, render_template, request, flash
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
-
 load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv('FLASK_SECRET_KEY', '0020022020')
+app.secret_key = os.getenv('FLASK_SECRET_KEY', '123')
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -18,23 +17,9 @@ app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 
 mail = Mail(app)
 
-# Lista de productos (simulación base de datos)
-productos = [
-    {"nombre": "ADIDAS CAMPUS", "imagen": "heroo.jpeg", "precio": 299, "linea": "Originals", "genero": "mujer"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "zpt.jpeg",   "precio": 299, "linea": "Originals", "genero": "mujer"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "zptr.jpeg",  "precio": 299, "linea": "Originals", "genero": "hombre"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "3.jpeg",     "precio": 299, "linea": "Originals", "genero": "hombre"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "4.jpeg",     "precio": 299, "linea": "Originals", "genero": "ninos"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "12.jpeg",    "precio": 299, "linea": "Originals", "genero": "ninos"},
-    {"nombre": "ADIDAS CAMPUS", "imagen": "444.jpeg",   "precio": 299, "linea": "Originals", "genero": "mujer"},
-]
-
-
-
-
 @app.route('/')
 def index():
-    return render_template('index.html', productos=productos)
+    return render_template('index.html')
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
@@ -56,8 +41,8 @@ def send_email():
         print(f"Error: {e}")
         flash("Ocurrió un error al enviar el mensaje. Intenta de nuevo más tarde.", "danger")
 
-    return render_template('index.html', productos=productos)
-
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
+

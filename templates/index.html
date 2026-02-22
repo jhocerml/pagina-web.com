@@ -1,127 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/styles.css" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="../static/app.js" defer></script>
+    <title>Mi página web</title>
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="logo">GOLDEN STEP</div>
-    <ul class="nav-links">
-      <li><a href="#inicio">INICIO</a></li>
-      <li><a href="#productos">PRODUCTOS</a></li>
-      <li><a href="#contacto">CONTACTO</a></li>
-      <li><a href="#acerca">ACERCA DE NOSOTROS</a></li>
-    </ul>
-    <button class="burger" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+    <nav class="navbar">
+        <div class="logo">Golden step</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#servicios">SERVICIOS</a></li>
+            <li><a href="#contacto">CONTACTO</a></li>
+            <li><a href="#acerca">ACERCA DE NOSOTROS</a></li>
+        </ul>
+        <button class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
 
-  <header id="inicio" class="hero-section">
-  <!-- Video de fondo -->
-  <video autoplay muted loop class="video-background">
-    <source src="{{ url_for('static', filename='fondov.mp4') }}" type="video/mp4">
-    Tu navegador no soporta este formato de video.
-  </video>
+    <header id="inicio" class="hero-section">
+        <h1>Bienvenido a Nuestra Página Web</h1>
+        <p>Descubre nuestros servicios y más.</p>
+        <a href="#servicios" class="btn-primary">Descubrir Más</a>
+    </header>
 
-  <!-- Contenido encima del video -->
-  <h1>Bienvenido a Nuestra Página Web</h1>
-  <p>Explora nuestros modelos exclusivos y encuentra el calzado perfecto para ti.</p>
-  <a href="#productos" class="btn-primary">Ver productos</a>
- </header>
-
-  <!-- Tabs -->
-  <div class="catalog-tabs">
-    <button class="catalog-tab active" data-filter="mujer">MUJER</button>
-    <button class="catalog-tab" data-filter="hombre">HOMBRE</button>
-    <button class="catalog-tab" data-filter="ninos">NIÑOS</button>
-  </div>
-
-  <!-- Grid -->
-  <div class="catalog-grid" id="productsGrid">
-    {% for producto in productos %}
-      <article class="catalog-card" data-gender="{{ producto.get('genero','mujer') }}">
-        <div class="catalog-media">
-          <button class="catalog-heart" type="button" aria-label="Favorito">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5.5 6 5.5c2 0 3.3 1 4 2 0.7-1 2-2 4-2 3.5 0 5.5 3 3.5 7C19 16.65 12 21 12 21z"/>
-            </svg>
-          </button>
-
-          <img src="{{ url_for('static', filename=producto['imagen']) }}" alt="{{ producto['nombre'] }}">
-        </div>
-
-        <div class="catalog-info">
-          <p class="catalog-price">S/ {{ producto.get('precio','') }}</p>
-          <p class="catalog-title">{{ producto['nombre'] }}</p>
-          <p class="catalog-line">{{ producto.get('linea','') }}</p>
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-
-  <div class="catalog-bottom-line"></div>
-</section>
+    <main>
+        <section id="servicios" class="cards-container">
+            <h2>Nuestros Servicios</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Servicio 1</h3>
+                    <p>Descripción breve de este servicio.</p>
+                </div>
+                <div class="card">
+                    <h3>Servicio 2</h3>
+                    <p>Descripción breve de este servicio.</p>
+                </div>
+                <div class="card">
+                    <h3>Servicio 3</h3>
+                    <p>Descripción breve de este servicio.</p>
+                </div>
+            </div>
 
 
- <section id="contacto" class="contact-section">
-  <h2>contacto</h2>
-  <form id="contact-form" method="post" action="/send_email">
-    <input type="text" name="nombre" placeholder="nombre" required />
-    <input type="email" name="correo" placeholder="correo electronico" required />
-    <textarea name="mensaje" placeholder="mensaje" required></textarea>
-    <button type="submit">enviar</button>
-    
+        </section>
+        <section id="contacto" class="contact-section">
+            <h2>Contacto</h2>
+            <form id="contact-form" method="POST" action="/send_email">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="email" name="correo" placeholder="Correo Electrónico" required>
+                <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
 
-  </form>
- </section>
+        
+       <!-- Contenedor para mensajes flash -->
+       <div id="flash-messages" class="flash-messages"></div>
+       
+        <section id="acerca" class="about-section">
+            <h2>Acerca de Nosotros</h2>
+            <p>Somos una empresa dedicada a brindar las mejores soluciones para ti.</p>
+        </section>
 
+    </main>
 
- <div id="flash-messages" class="flash-messages"></div>
-
-    <section id="acerca" class="about-section">
-      <h2>Acerca de Nosotros</h2>
-      <p>“En Golden Step llevamos la moda hasta tu puerta. Ofrecemos calzado moderno, en tendencia y con la comodidad que necesitas para destacar en cada paso.
-        Realizamos envíos a nivel nacional. Contáctanos por WhatsApp o redes sociales y recibe atención rápida, personalizada y confiable.”</p>
-      
-    </section>
-  </main>
-
-  <footer>
-  <p>© <span id="year"></span> Golden Step — Todos los derechos reservados.</p>
-  <p>📦 Envíos a todo el Perú</p>
-  </footer>
-
-
-  <!-- Redes flotantes -->
-  <div class="social-float">
-    <a class="sf ig" href="https://www.instagram.com/goldenstep.pe" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-
-    <a class="sf fb" href="https://www.facebook.com/Goldenstepoficial" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-    </a>
-
-    <a class="sf tk" href="https://www.tiktok.com/@goldenstep.pe" target="_blank" rel="noopener" aria-label="TikTok">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
-    </a>
-  </div>
-
-  <!-- WhatsApp flotante -->
-  <a class="whatsapp-float"
-     href="https://wa.me/51968294133?text=Hola%20Golden%20Step,%20me%20interesan%20sus%20calzados.%20%C2%BFMe%20pueden%20enviar%20el%20cat%C3%A1logo%20disponible%20y%20promociones%20actuales%3F"
-     target="_blank" rel="noopener" aria-label="WhatsApp">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-  </a>
-
+    <footer>
+        <p>&copy; 2025. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>

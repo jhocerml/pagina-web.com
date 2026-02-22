@@ -59,120 +59,104 @@ body {
     background: white;
 }
 
-/* HERO con imagen - más limpio */
-.hero-section{
-  background:
-    linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.90)),
-    url("/static/fondo3.jpg") no-repeat center center !important;
-  background-size: cover !important;
+/* página de bienvenida-Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background: lightgray no-repeat center/cover;
+    color: black;
+    text-align: center;
+    padding: 2rem;
 }
 
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
 
 .hero-section p {
- font-size: 1.5rem;
- margin-bottom: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-.btn-primary{
- background: linear-gradient(45deg,#C9A227,#F5E6A3,#C9A227);
- color: black;
- padding: 0.9rem 2rem;
- border-radius: 50px;
- font-weight: bold;
- border: none;
- box-shadow: 0 6px 18px rgba(201,162,39,0.35);
- transition: 0.3s;
+.btn-primary {
+    background: black;
+    color: white;
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== PRODUCTOS PREMIUM ===== */
-
-.productos-container{
- background:
- linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
- url("/static/fondopr.jpg") center/cover no-repeat;
+.btn-primary:hover {
+    background: #333;
+    transform: translateY(-3px);
 }
 
-.productos-container h2{
-    color: #ffffff;
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: 3px;
+/* sección de tarjetas */
+.cards-container {
+    padding: 3rem;
+    background: #f9f9f9;
+}
+
+.cards-container h2 {
     text-align: center;
     margin-bottom: 2rem;
-
-    text-shadow:
-    0 0 10px rgba(255,255,255,0.2),
-    0 5px 30px rgba(0,0,0,0.9);
+    font-size: 2.5rem;
+    color: rgb(0, 0, 0);
 }
 
-.productos {
+.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
-.producto-card {
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    padding: 1.2rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    transition: transform .35s ease, box-shadow .35s ease;
+    transition: transform 0.3s;
+    color: black;
 }
 
-.producto-card:hover {
-    transform: translateY(-12px) scale(1.04);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.40);
+.card:hover {
+    transform: scale(1.05);
 }
 
-/* Imagen uniforme */
-.producto-card img {
+.card img {
     width: 100%;
-    height: 220px;        /* ⭐ clave para que todas se vean iguales */
-    object-fit: cover;    /* ⭐ evita deformaciones */
-    border-radius: 14px;
-    margin-bottom: 14px;
-
-    transition: transform .45s ease;
+    height: auto;
 }
 
-.producto-card:hover img {
-    transform: scale(1.07);
+.card h3 {
+    margin: 1rem 0;
+    font-size: 1.5rem;
 }
 
-/* Nombre del producto */
-.producto-card h3 {
-    margin-top: 12px;
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: #111;
-    letter-spacing: .5px;
-
-    min-height: 55px;          /* ⭐ evita nombres desalineados */
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding: 0 10px;
+.card p {
+    padding: 0 1rem 1rem;
+    font-size: 0.9rem;
 }
 
-
-/* Sección de contacto */
+/* Seccion de contacto */
 .contact-section {
-    display: none;
     padding: 3rem;
     background: #000;
     color: white;
     text-align: center;
 }
 
-#contacto:target {
-    display: block;
+.contact-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
 }
 
 #contact-form {
@@ -180,9 +164,7 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     max-width: 500px;
-    width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 #contact-form input, #contact-form textarea {
@@ -190,8 +172,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 10px;
     outline: none;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 #contact-form button {
@@ -204,9 +184,6 @@ body {
     cursor: pointer;
     border-radius: 50px;
     transition: background 0.3s;
-    width: auto;
-    max-width: 200px;
-    margin: 0 auto;
 }
 
 #contact-form button:hover {
@@ -329,504 +306,4 @@ footer {
     .burger {
         display: flex;
     }
-}
-
-
-
-
-/* Diseño responsivo para productos */
-@media (max-width: 768px) {
-    .productos {
-        grid-template-columns: 1fr; /* Muestra los productos en una sola columna en móviles */
-    }
-
-    .producto-card {
-        padding: 1rem;
-    }
-
-    .producto-card img {
-        max-height: 180px; /* Ajustamos la altura de las imágenes para móviles */
-        object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
-    }
-
-    .producto-card h3 {
-        font-size: 1.2rem; /* Ajustamos el tamaño de los nombres de los productos */
-    }
-}
-
-/* Ajustes para pantallas muy pequeñas, como móviles de pantalla pequeña */
-@media (max-width: 480px) {
-    .productos {
-        grid-template-columns: 1fr; /* Una sola columna */
-    }
-
-    .producto-card {
-        padding: 0.8rem; /* Reducimos el padding para más espacio */
-    }
-
-    .producto-card img {
-        max-height: 160px; /* Reducimos aún más la altura de la imagen */
-    }
-
-    .producto-card h3 {
-        font-size: 1rem; /* Reducimos el tamaño del texto */
-    }
-}
-
-.whatsapp-float{
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  transition: 0.3s;
-}
-
-.whatsapp-float img{
-  width: 35px;
-  height: 35px;
-}
-
-.whatsapp-float:hover{
-  transform: scale(1.1);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
-}
-
-/* ===== SOCIAL ICONS PREMIUM ===== */
-
-.social-icons{
- display:flex;
- justify-content:center;
- gap:18px;
- margin-top:20px;
-}
-
-.social-icons a{
- display:flex;
- align-items:center;
- justify-content:center;
- width:55px;
- height:55px;
- background:rgba(255,255,255,0.08);
- backdrop-filter: blur(8px);
- -webkit-backdrop-filter: blur(8px);
- border-radius:50%;
- box-shadow:
- 0 8px 20px rgba(0,0,0,0.25),
- inset 0 1px 1px rgba(255,255,255,0.2);
- transition: all 0.35s ease;
-}
-
-
-.social-icons a:hover{
- transform: translateY(-6px) scale(1.08);
- box-shadow:
- 0 18px 35px rgba(0,0,0,0.35),
- 0 0 20px rgba(255,255,255,0.15);
-}
-
-.social-icons img{
- width:26px;
- height:26px;
- object-fit:contain;
- filter: brightness(1.1);
-}
-
-/* ===== Redes flotantes tipo app ===== */
-.social-float{
-  position: fixed;
-  right: 20px;
-  bottom: 95px; /* para que quede encima del WhatsApp */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 9999;
-}
-
-.social-float .sf{
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background: rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  box-shadow: 0 12px 28px rgba(0,0,0,0.28);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.social-float .sf:hover{
-  transform: translateY(-4px) scale(1.06);
-  box-shadow: 0 18px 38px rgba(0,0,0,0.35);
-}
-
-.social-float .sf img{
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
-}
-
-/* En móvil un poquito más pequeño */
-@media (max-width: 480px){
-  .social-float{ right: 14px; bottom: 86px; }
-  .social-float .sf{ width: 50px; height: 50px; }
-  .social-float .sf img{ width: 24px; height: 24px; }
-}
-
-/* ===== CATALOGO TIPO ADIDAS ===== */
-
-.productos-container{
-  background:#fff; /* fondo claro como referencia */
-}
-
-.catalog-tabs{
-  display:flex;
-  gap:12px;
-  margin: 10px 0 24px;
-}
-
-.catalog-tab{
-  padding:10px 14px;
-  border:1px solid #cfcfcf;
-  background:#fff;
-  cursor:pointer;
-  font-weight:800;
-  letter-spacing:.5px;
-}
-
-.catalog-tab.active{
-  background:#000;
-  color:#fff;
-  border-color:#000;
-}
-
-.catalog-grid{
-  display:grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap:22px;
-}
-
-@media (max-width: 1100px){ .catalog-grid{ grid-template-columns: repeat(3, 1fr);} }
-@media (max-width: 820px){ .catalog-grid{ grid-template-columns: repeat(2, 1fr);} }
-@media (max-width: 520px){ .catalog-grid{ grid-template-columns: 1fr;} }
-
-.catalog-card{
-  display:flex;
-  flex-direction:column;
-}
-
-.catalog-media{
-  position:relative;
-  background:#eef1f2;
-  height:320px;
-  overflow:hidden;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  padding:18px;
-}
-
-.catalog-media img{
-  max-width:92%;
-  max-height:88%;
-  object-fit:contain;
-}
-
-.catalog-heart{
-  position:absolute;
-  top:16px;
-  right:16px;
-  width:34px;
-  height:34px;
-  border:none;
-  background:transparent;
-  cursor:pointer;
-}
-
-.catalog-heart svg{
-  width:100%;
-  height:100%;
-  fill:transparent;
-  stroke:#000;
-  stroke-width:1.8;
-}
-
-.catalog-heart.liked svg{
-  fill:#000;
-}
-
-.catalog-info{
-  padding-top:12px;
-}
-
-.catalog-price{
-  font-weight:900;
-  font-size:18px;
-  margin:0 0 6px;
-}
-
-.catalog-title{
-  margin:0 0 8px;
-  font-size:15px;
-}
-
-.catalog-line{
-  color:#8a8a8a;
-  margin:0;
-  font-size:14px;
-}
-
-.catalog-bottom-line{
-  height:3px;
-  width:60%;
-  background:#000;
-  margin: 50px 0 0;
-}
-
-/* =========================================================
-   GOLDEN STEP - THEME PREMIUM (NEGRO + DORADO + CATALOGO BLANCO)
-   Pegar al FINAL del styles.css
-   ========================================================= */
-
-:root{
-  --black:#0B0B0D;
-  --white:#FFFFFF;
-
-  --gold:#D4AF37;
-  --gold-dark:#B58B2A;
-
-  --bg:#FFFFFF;
-  --card-bg:#EEF1F2;
-
-  --text:#111827;
-  --muted:#6B7280;
-
-  --border:#D1D5DB;
-}
-
-/* Base */
-body{
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* Navbar */
-.navbar{
-  background: var(--black) !important;
-  color: var(--white) !important;
-}
-
-.navbar .logo{
-  color: var(--white) !important;
-  font-weight: 900;
-  letter-spacing: .6px;
-}
-
-.nav-links a{
-  color: var(--white) !important;
-}
-
-.nav-links a:hover{
-  color: var(--gold) !important;
-}
-
-/* Hero (más elegante y dorado) */
-.hero-section{
-  position: relative;
-  color: var(--white) !important;
-}
-
-/* Oscurece un poco y agrega un brillo dorado suave */
-.hero-section::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(800px 400px at 50% 55%, rgba(212,175,55,0.14), transparent 60%),
-    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88));
-  pointer-events:none;
-}
-
-.hero-section > *{
-  position: relative;
-  z-index: 1;
-}
-
-.hero-section h1{
-  color: var(--white) !important;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-shadow:
-    0 0 6px rgba(255,255,255,0.22),
-    0 0 18px rgba(212,175,55,0.35),
-    0 0 45px rgba(212,175,55,0.22);
-}
-
-.hero-section p{
-  color: rgba(255,255,255,0.88) !important;
-}
-
-/* Botón principal */
-.btn-primary{
-  background: var(--gold) !important;
-  color: var(--black) !important;
-  font-weight: 900 !important;
-  border: none !important;
-  box-shadow: 0 12px 28px rgba(212,175,55,0.22) !important;
-}
-
-.btn-primary:hover{
-  background: var(--gold-dark) !important;
-  transform: translateY(-1px);
-}
-
-/* Sección PRODUCTOS en blanco (tipo tienda) */
-.productos-container{
-  background: var(--white) !important;
-  padding: 40px 22px 70px;
-}
-
-.productos-container h2{
-  color: var(--black) !important;
-  text-shadow: none !important;
-}
-
-/* Tabs catálogo */
-.catalog-tab{
-  border:1px solid var(--border) !important;
-  background: var(--white) !important;
-  color: var(--black) !important;
-  font-weight: 900 !important;
-}
-
-.catalog-tab.active{
-  background: var(--black) !important;
-  color: var(--white) !important;
-  border-color: var(--black) !important;
-}
-
-.catalog-tab:hover{
-  border-color: var(--black) !important;
-}
-
-/* Cards catálogo */
-.catalog-media{
-  background: var(--card-bg) !important;
-}
-
-.catalog-heart svg{
-  stroke: var(--black) !important;
-}
-
-.catalog-heart.liked svg{
-  fill: var(--black) !important;
-}
-
-.catalog-price{
-  color: var(--black) !important;
-}
-
-.catalog-title{
-  color: var(--text) !important;
-}
-
-.catalog-line{
-  color: var(--muted) !important;
-}
-
-.catalog-bottom-line{
-  background: var(--black) !important;
-}
-
-/* Contacto: botón dorado (opcional pero recomendado) */
-#contact-form button{
-  background: var(--gold) !important;
-  color: var(--black) !important;
-}
-
-#contact-form button:hover{
-  background: var(--gold-dark) !important;
-}
-
-/* Footer */
-footer{
-  background: var(--black) !important;
-  color: var(--white) !important;
-}
-
-/* ===== HERO FINAL (centrado + premium) ===== */
-.hero-section{
-  min-height: calc(100vh - 70px); /* ocupa casi toda la pantalla */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  padding: 3rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-
-  /* Fondo premium (sin imagen) */
-  background:
-    radial-gradient(900px 450px at 50% 55%, rgba(212,175,55,0.16), transparent 60%),
-    radial-gradient(900px 450px at 50% 10%, rgba(255,255,255,0.06), transparent 55%),
-    linear-gradient(180deg, #0B0B0D 0%, #000 100%) !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-}
-
-.hero-section h1{
-  max-width: 1100px;
-  margin: 0 0 18px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  font-size: clamp(2rem, 4vw, 3.6rem);
-  text-shadow:
-    0 0 6px rgba(255,255,255,0.22),
-    0 0 18px rgba(212,175,55,0.35),
-    0 0 45px rgba(212,175,55,0.22);
-}
-
-.hero-section p{
-  max-width: 900px;
-  margin: 0 0 26px;
-  font-size: clamp(1.05rem, 1.8vw, 1.5rem);
-  color: rgba(255,255,255,0.88);
-}
-
-/* Hero Section */
-.hero-section {
-  position: relative;
-  height: 100vh;  /* Asegura que ocupe toda la altura de la pantalla */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  z-index: 2;  /* Asegura que el contenido esté encima del video */
-}
-
-.video-background {
-  position: absolute;  /* Asegura que el video ocupe todo el fondo */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;  /* El video estará detrás del texto */
-  object-fit: cover;
-  min-height: 100vh;  /* Asegura que cubra toda la pantalla en cualquier dispositivo */
 }
